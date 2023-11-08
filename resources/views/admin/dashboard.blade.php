@@ -1,9 +1,8 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 
 @section('content')
-    <div class="container">
+    <div class="container ">
         <h2 class="fs-4 text-secondary my-4">
-            hai stato bravo ^_^
             {{ __('Dashboard') }}
         </h2>
         <div class="row justify-content-center">
@@ -21,6 +20,9 @@
                         {{ __('You are logged in!') }}
                     </div>
                 </div>
+
+                <a class="btn btn-primary mt-5" href="{{ route('admin.projects.index') }}"> Table Project </a>
+
             </div>
         </div>
     </div>
