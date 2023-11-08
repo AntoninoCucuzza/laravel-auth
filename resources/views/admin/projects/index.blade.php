@@ -19,7 +19,8 @@
                             <td><img width="150" src="{{ $project->thumb }}" alt=""></td>
                             <td>
                                 <a class="btn btn-success" href="{{ route('admin.projects.show', $project->id) }}">More</a>
-                                <a class="btn btn-warning " href="{{-- {{ route('projects.edit', $project->id) }} --}}">Edit</a>
+                                <a class="btn btn-warning "
+                                    href=" {{ route('admin.projects.edit', $project->id) }}">Edit</a>
 
                                 <button type="button" class="btn btn-danger" data-bs-toggle="modal"
                                     data-bs-target="#modalId-{{ $project->id }}">
