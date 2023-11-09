@@ -33,7 +33,7 @@ class ProjectController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreProjectRequest    $request)
+    public function store(StoreProjectRequest $request)
     {
         $val_data = $request->validated();
 
@@ -70,7 +70,22 @@ class ProjectController extends Controller
      */
     public function update(UpdateProjectRequest $request, Project $project)
     {
-        //
+        $val_data = $request->validated();
+
+        $val_data['slug'] = Str::slug($request->title, '-');
+
+        if ($request->has('thumb') && $project->thumb) {
+
+            Storage::delete($project->thumb);
+
+            $newThumb = $request->thumb;
+            $path = Storage::put('project_thumb', $newThumb);
+            $data['thumb'] = $path;
+        }
+
+        $project->update($val_data);
+
+        return to_route('admin.projects.show', $project)->with('message', 'hai stato brv'); /*  da cambiare */
     }
 
     /**

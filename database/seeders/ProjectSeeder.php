@@ -22,7 +22,7 @@ class ProjectSeeder extends Seeder
             $project = new project();
             $project->title = $faker->city(); /* da cambiare */
             $project->slug = Str::slug($project->title, '-');
-            $project->description = $faker->text();
+            $project->description = $faker->realText(200);
             $project->thumb = $faker->imageUrl(640, 480, 'animals', true);
             $project->project_link = $faker->url();
             $project->save();

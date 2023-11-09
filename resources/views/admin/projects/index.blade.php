@@ -10,6 +10,8 @@
         @endif
 
         <div class="table-responsive-sm mt-5">
+            <a class="btn m-2 btn-info" href="{{ route('admin.projects.create') }}">+ project</a>
+
             <table class="table table-light table-hover">
                 <thead class="table-dark">
                     <tr class="text-center">
@@ -25,11 +27,13 @@
                             <td>{{ $project->id }}</td>
                             <td><a href="{{ $project->project_link }}">{{ $project->title }}</a></td>
                             <td><img width="150" src="{{ $project->thumb }}" alt=""></td>
+
                             <td>
                                 <a class="btn btn-success"
                                     href="{{ route('admin.projects.show', $project->slug) }}">More</a>
+
                                 <a class="btn btn-warning "
-                                    href=" {{ route('admin.projects.edit', $project->id) }}">Edit</a>
+                                    href=" {{ route('admin.projects.edit', $project->slug) }}">Edit</a>
 
                                 <button type="button" class="btn btn-danger" data-bs-toggle="modal"
                                     data-bs-target="#modalId-{{ $project->id }}">
