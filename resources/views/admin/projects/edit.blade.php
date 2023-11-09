@@ -24,7 +24,7 @@
 
                 <div>
                     <label for="project_link" class="form-label mt-2">project_link</label>
-                    <input name="project_link " class=" form-control" type="text" placeholder="new project_link"
+                    <input name="project_link" class=" form-control" type="text" placeholder="new project_link"
                         value="{{ $project->project_link }}">
                 </div>
 

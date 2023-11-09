@@ -18,6 +18,7 @@ return new class extends Migration
             $table->text('description')->nullable();
             $table->text('thumb')->nullable(); /* screeshot */
             $table->string('project_link')->nullable(); /* github link? */
+            $table->softDeletes();
             $table->timestamps();
         });
     }

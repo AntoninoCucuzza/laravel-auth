@@ -39,6 +39,8 @@ class ProjectController extends Controller
 
         $val_data['slug'] = Str::slug($request->title, '-');
 
+        $val_data['project_link'] = $request->project_link;
+
         if ($request->has('thumb')) {
             $path = Storage::put('project_thumb', $request->thumb);
 
@@ -74,10 +76,13 @@ class ProjectController extends Controller
 
         $val_data['slug'] = Str::slug($request->title, '-');
 
-        if ($request->has('thumb') && $project->thumb) {
+        $val_data['project_link'] = $request->project_link;
 
-            Storage::delete($project->thumb);
+        if ($request->has('thumb')) {
 
+            if ($project->thumb) {
+                Storage::delete($project->thumb);
+            }
             $newThumb = $request->thumb;
             $path = Storage::put('project_thumb', $newThumb);
             $data['thumb'] = $path;
@@ -93,6 +98,13 @@ class ProjectController extends Controller
      */
     public function destroy(Project $project)
     {
-        //
+
+        if ($project->thumb) {
+            Storage::delete($project->thumb);
+        }
+
+        $project->delete();
+
+        return to_route('admin.projects.index')->with('message', 'hai statoo bravoh ;-)');
     }
 }

@@ -11,7 +11,7 @@ class Project extends Model
 {
     use HasFactory;
 
-    /*     use SoftDeletes; */
+    use SoftDeletes;
 
     protected $fillable = ['_token', 'title', 'slug', 'thumb', 'description', 'project_link'];
 
