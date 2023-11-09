@@ -14,10 +14,10 @@ return new class extends Migration
         Schema::create('projects', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->string('slug');
-            $table->text('description');
-            $table->text('thumb'); /* screeshot */
-            $table->string('project_link'); /* github link? */
+            $table->string('slug')->nullable();
+            $table->text('description')->nullable();
+            $table->text('thumb')->nullable(); /* screeshot */
+            $table->string('project_link')->nullable(); /* github link? */
             $table->timestamps();
         });
     }

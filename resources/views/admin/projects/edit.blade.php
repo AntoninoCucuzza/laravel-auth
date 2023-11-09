@@ -8,8 +8,9 @@
             <input type="file">
 
         </div>
+
         <div class="col-6">
-            <h1>right now is </h1>
+            <h1>right now is</h1>
             <h2>{{ $project->title }}</h2>
             <img src="{{ $project->thumb }}" alt="">
         </div>

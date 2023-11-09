@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
-use App\Models\Project;
-use Illuminate\Http\Request;
+use App\Http\Requests\UpdateProjectRequest;
+use App\Http\Requests\StoreProjectRequest;
 use Illuminate\Support\Facades\Storage;
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+use App\Models\Project;
 
 class ProjectController extends Controller
 {
@@ -14,7 +17,7 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        $projects = Project::all();
+        $projects = Project::orderByDesc('id')->get();
 
         return view('admin.projects.index', compact('projects'));
     }
@@ -24,15 +27,26 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.projects.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreProjectRequest    $request)
     {
-        //
+        $val_data = $request->validated();
+
+        $val_data['slug'] = Str::slug($request->title, '-');
+
+        if ($request->has('thumb')) {
+            $path = Storage::put('project_thumb', $request->thumb);
+
+            $val_data['thumb'] = $path;
+        }
+        Project::create($val_data);
+
+        return to_route('admin.projects.index')->with('message', 'hai stato brv'); /*  da cambiare */
     }
 
     /**
@@ -54,7 +68,7 @@ class ProjectController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Project $project)
+    public function update(UpdateProjectRequest $request, Project $project)
     {
         //
     }

@@ -22,6 +22,7 @@
                 </div>
 
                 <a class="btn btn-primary mt-5" href="{{ route('admin.projects.index') }}"> Table Project </a>
+                <a class="btn btn-danger" href="{{ route('admin.projects.create') }}">+</a>
 
             </div>
         </div>

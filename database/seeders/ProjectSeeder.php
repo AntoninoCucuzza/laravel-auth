@@ -20,7 +20,7 @@ class ProjectSeeder extends Seeder
         for ($i = 0; $i < 10; $i++) {
 
             $project = new project();
-            $project->title = $faker->city();/* da cambiare */
+            $project->title = $faker->city(); /* da cambiare */
             $project->slug = Str::slug($project->title, '-');
             $project->description = $faker->text();
             $project->thumb = $faker->imageUrl(640, 480, 'animals', true);
