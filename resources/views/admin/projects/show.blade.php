@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
-    <div class="container">
+    <div class="container text-white">
         <h1 class="fw-bold text-center mt-3">Project Number: # {{ $project->id }}</h1>
         @if (session('message'))
             <div class="alert alert-success alert-dismissible fade show mt-3" role="alert">

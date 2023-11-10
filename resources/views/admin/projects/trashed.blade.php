@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
-    <h1 class="text-center"> soft-deleted</h1>
+    <h1 class="text-center text-white"> soft-deleted</h1>
     <table class="table table-light table-hover align-middle">
         <thead class="table-dark">
             <tr class="text-center">

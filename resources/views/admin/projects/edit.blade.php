@@ -14,7 +14,7 @@
         @csrf
         @method('PUT')
 
-        <div class="row mt-5">
+        <div class="row mt-5 text-white">
             <div class="col-6">
                 <div>
                     <label for="title" class="form-label">title</label>

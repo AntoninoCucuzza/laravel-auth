@@ -10,13 +10,15 @@
         @endif
 
         <div class="table-responsive-sm mt-5">
-            <div class="d-flex justify-content-between">
-                <h1 class="text-center">projects table</h1>
-                <a class="btn m-2 btn-info" href="{{ route('admin.projects.create') }}">+ project</a>
+            <div class="d-flex justify-content-between my-4">
+                <h1 class="text-center text-white">projects table</h1>
+                <a class="btn m-2 btn-dark" href="{{ route('admin.projects.create') }}">
+                    <i class="fa-solid fa-pencil" style="color: #ffffff;"></i> new project
+                </a>
             </div>
 
-            <table class="table table-light table-hover align-middle">
-                <thead class="table-dark">
+            <table class="table table-dark table-hover align-middle ">
+                <thead class="">
                     <tr class="text-center">
                         <th scope="col">ID</th>
                         <th scope="col">Title</th>
@@ -27,7 +29,7 @@
                 </thead>
                 <tbody>
                     @forelse ($projects as $project)
-                        <tr class="text-center table-dark">
+                        <tr class="text-center ">
 
                             <td>{{ $project->id }}</td>
 
@@ -38,15 +40,17 @@
                             <td><a href="{{ $project->github_link }}"><i class="fa-brands fa-github fa-lg"></i></a> <a
                                     href="{{ $project->project_link }}"><i class="fa-solid fa-link fa-lg"></i></a></td>
                             <td>
-                                <a class="btn btn-success"
-                                    href="{{ route('admin.projects.show', $project->slug) }}">More</a>
+                                <a class="btn btn-light" href="{{ route('admin.projects.show', $project->slug) }}">
+                                    <i class="fa-solid fa-eye" style="color: #000000;"></i>
+                                </a>
 
-                                <a class="btn btn-warning "
-                                    href=" {{ route('admin.projects.edit', $project->slug) }}">Edit</a>
+                                <a class="btn btn-warning" href=" {{ route('admin.projects.edit', $project->slug) }}">
+                                    <i class="fa-solid fa-pen-to-square" style="color: #000000;"></i>
+                                </a>
 
                                 <button type="button" class="btn btn-danger" data-bs-toggle="modal"
                                     data-bs-target="#modalId-{{ $project->id }}">
-                                    Delete
+                                    <i class="fa-solid fa-trash-can" style="color: #000000;"></i>
                                 </button>
 
 
