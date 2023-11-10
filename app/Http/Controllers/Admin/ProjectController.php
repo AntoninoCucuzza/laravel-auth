@@ -18,8 +18,9 @@ class ProjectController extends Controller
     public function index()
     {
         $projects = Project::orderByDesc('id')->get();
+        $trashedProjects = Project::onlyTrashed()->get();
 
-        return view('admin.projects.index', compact('projects'));
+        return view('admin.projects.index', compact('projects', 'trashedProjects'));
     }
 
     /**
@@ -40,6 +41,9 @@ class ProjectController extends Controller
         $val_data['slug'] = Str::slug($request->title, '-');
 
         $val_data['project_link'] = $request->project_link;
+
+        $val_data['github_link'] = $request->github_link;
+
 
         if ($request->has('thumb')) {
             $path = Storage::put('project_thumb', $request->thumb);
@@ -77,6 +81,9 @@ class ProjectController extends Controller
         $val_data['slug'] = Str::slug($request->title, '-');
 
         $val_data['project_link'] = $request->project_link;
+
+        $val_data['github_link'] = $request->github_link;
+
 
         if ($request->has('thumb')) {
 

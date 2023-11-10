@@ -17,7 +17,8 @@ return new class extends Migration
             $table->string('slug')->nullable();
             $table->text('description')->nullable();
             $table->text('thumb')->nullable(); /* screeshot */
-            $table->string('project_link')->nullable(); /* github link? */
+            $table->string('project_link')->nullable(); /* ipotetico link del progetto online */
+            $table->string('github_link')->nullable(); /*link github */
             $table->softDeletes();
             $table->timestamps();
         });

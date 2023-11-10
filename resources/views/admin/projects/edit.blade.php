@@ -29,6 +29,12 @@
                 </div>
 
                 <div>
+                    <label for="github_link" class="form-label mt-2">github_link</label>
+                    <input name="github_link" class=" form-control" type="text" placeholder="new github_link"
+                        value="{{ $project->github_link }}">
+                </div>
+
+                <div>
                     <label for="thumb" class="form-label mt-2">thumb</label>
                     <input name="thumb" class=" form-control" type="file">
                 </div>

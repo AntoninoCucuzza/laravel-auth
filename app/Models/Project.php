@@ -13,7 +13,7 @@ class Project extends Model
 
     use SoftDeletes;
 
-    protected $fillable = ['_token', 'title', 'slug', 'thumb', 'description', 'project_link'];
+    protected $fillable = ['_token', 'title', 'slug', 'thumb', 'description', 'project_link', 'github_link'];
 
     protected function thumb(): Attribute
     {

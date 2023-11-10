@@ -25,6 +25,7 @@ class ProjectSeeder extends Seeder
             $project->description = $faker->realText(200);
             $project->thumb = $faker->imageUrl(640, 480, 'animals', true);
             $project->project_link = $faker->url();
+            $project->github_link = $faker->url();
             $project->save();
         }
     }
