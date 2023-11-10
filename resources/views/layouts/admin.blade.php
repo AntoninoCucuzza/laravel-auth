@@ -82,9 +82,15 @@
                                     href="{{ route('admin.dashboard') }}">
                                     <i class="fa-solid fa-tachometer-alt fa-lg fa-fw"></i> Dashboard
                                 </a>
+
                                 <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.projects.index' ? 'bg-secondary' : '' }}"
                                     href="{{ route('admin.projects.index') }}">
                                     <i class="fa-solid fa-diagram-project"></i> Projects
+                                </a>
+
+                                <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.trashed' ? 'bg-secondary' : '' }}"
+                                    href="{{ route('admin.trashed') }}">
+                                    <i class="fa-solid fa-trash-can"></i> trashed
                                 </a>
                             </li>
 

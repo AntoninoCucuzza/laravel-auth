@@ -22,9 +22,14 @@ Route::get('/', function () {
 
 Route::middleware(['auth', 'verified'])->prefix('admin')->name('admin.')->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
+
     Route::resource('projects', ProjectController::class)->parameters([
         'projects' => 'project:slug'
     ]);
+
+    Route::get('projects/trashed', [ProjectController::class, 'trashed'])->name('trashed');
+    Route::patch('projects/{id}/restore', [ProjectController::class, 'restore'])->name('projects.restore');
+    Route::delete('projects/{id}/forceDelete', [ProjectController::class, 'forceDelete'])->name('projects.forceDelete');
 });
 
 

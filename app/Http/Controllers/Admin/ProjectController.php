@@ -52,7 +52,7 @@ class ProjectController extends Controller
         }
         Project::create($val_data);
 
-        return to_route('admin.projects.index')->with('message', 'hai stato brv'); /*  da cambiare */
+        return to_route('admin.projects.index')->with('message', 'Progetto creato con successo!');
     }
 
     /**
@@ -97,7 +97,7 @@ class ProjectController extends Controller
 
         $project->update($val_data);
 
-        return to_route('admin.projects.show', $project)->with('message', 'hai stato brv'); /*  da cambiare */
+        return to_route('admin.projects.show', $project)->with('message', 'Progetto aggiornato!');
     }
 
     /**
@@ -112,6 +112,30 @@ class ProjectController extends Controller
 
         $project->delete();
 
-        return to_route('admin.projects.index')->with('message', 'hai statoo bravoh ;-)');
+        return to_route('admin.projects.index')->with('message', 'Progetto cestinato!');
+    }
+
+    public function trashed()
+    {
+        $trashedProjects = Project::onlyTrashed()->get();
+
+        return view('admin.projects.trashed', compact('trashedProjects'));
+    }
+
+    public function restore($id)
+    {
+        $restoredProject = Project::withTrashed()->find($id);
+        $restoredProject->restore();
+
+        return redirect()->route('admin.projects.index')->with('message', 'Progetto ripristinato!');
+    }
+
+
+    public function forceDelete($id)
+    {
+        $project = Project::withTrashed()->find($id);
+        $project->forceDelete();
+
+        return redirect()->route('admin.projects.index')->with('message', 'Progetto eliminato definitivamente!');
     }
 }
