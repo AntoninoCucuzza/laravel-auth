@@ -1,15 +1,6 @@
 @extends('layouts.admin')
 
 @section('content')
-    @if ($errors->any())
-        <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
     <form action="{{ route('admin.projects.update', $project) }}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT')
@@ -18,30 +9,72 @@
             <div class="col-6">
                 <div>
                     <label for="title" class="form-label">title</label>
-                    <input name="title" class=" form-control" type="text" placeholder="new title"
-                        value="{{ $project->title }}">
+                    <input name="title" class=" form-control  @error('title') is-invalid @enderror" type="text"
+                        placeholder="new title" value="{{ $project->title }}">
+
+
+                    @if ($errors->get('title'))
+                        <label for="title" class="form-label">
+                            @foreach ($errors->get('title') as $error)
+                                <small class="text-danger">{{ $error }}</small>
+                            @endforeach
+                        </label>
+                    @endif
                 </div>
 
                 <div>
                     <label for="project_link" class="form-label mt-2">project_link</label>
-                    <input name="project_link" class=" form-control" type="text" placeholder="new project_link"
-                        value="{{ $project->project_link }}">
+                    <input name="project_link" class="form-control  @error('project_link') is-invalid @enderror"
+                        type="text" placeholder="new project_link" value="{{ $project->project_link }}">
+
+                    @if ($errors->get('project_link'))
+                        <label for="project_link" class="form-label">
+                            @foreach ($errors->get('project_link') as $error)
+                                <small class="text-danger">{{ $error }}</small>
+                            @endforeach
+                        </label>
+                    @endif
                 </div>
 
                 <div>
                     <label for="github_link" class="form-label mt-2">github_link</label>
-                    <input name="github_link" class=" form-control" type="text" placeholder="new github_link"
-                        value="{{ $project->github_link }}">
+                    <input name="github_link" class="form-control  @error('github_link') is-invalid @enderror"
+                        type="text" placeholder="new github_link" value="{{ $project->github_link }}">
+
+                    @if ($errors->get('github_link'))
+                        <label for="github_link" class="form-label">
+                            @foreach ($errors->get('github_link') as $error)
+                                <small class="text-danger">{{ $error }}</small>
+                            @endforeach
+                        </label>
+                    @endif
                 </div>
 
                 <div>
                     <label for="thumb" class="form-label mt-2">thumb</label>
-                    <input name="thumb" class=" form-control" type="file">
+                    <input name="thumb" class="form-control  @error('thumb') is-invalid @enderror" type="file">
+
+                    @if ($errors->get('thumb'))
+                        <label for="thumb" class="form-label">
+                            @foreach ($errors->get('thumb') as $error)
+                                <small class="text-danger">{{ $error }}</small>
+                            @endforeach
+                        </label>
+                    @endif
                 </div>
 
                 <div>
                     <label for="description" class="form-label mt-2">description</label>
-                    <textarea name="description" class="form-control" id="description" cols="30" rows="10">{{ $project->description }}</textarea>
+                    <textarea name="description" class="form-control  @error('description') is-invalid @enderror" id="description"
+                        cols="30" rows="10">{{ $project->description }}</textarea>
+
+                    @if ($errors->get('description'))
+                        <label for="description" class="form-label">
+                            @foreach ($errors->get('description') as $error)
+                                <small class="text-danger">{{ $error }}</small>
+                            @endforeach
+                        </label>
+                    @endif
                 </div>
 
                 <div class="mt-4">

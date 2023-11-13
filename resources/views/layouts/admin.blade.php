@@ -27,16 +27,18 @@
     <div id="app">
 
         <header class="navbar navbar-dark sticky-top bg-base flex-md-nowrap p-2 shadow">
+            <div class="">
 
-            <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="/">BoolPress</a>{{-- da cambiare  --}}
+                <button class="navbar-toggler position-absolute d-md-none collapsed" type="button"
+                    data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
-            <button class="navbar-toggler position-absolute d-md-none collapsed" type="button"
-                data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu"
-                aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+                <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="/">BoolPress</a> {{-- da cambiare  --}}
+            </div>
 
-            <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
+            {{--  <input class="form-control form-control-dark " type="text" placeholder="Search" aria-label="Search"> --}}
 
             <div class="navbar-nav">
                 <div class="nav-item text-nowrap ms-2">

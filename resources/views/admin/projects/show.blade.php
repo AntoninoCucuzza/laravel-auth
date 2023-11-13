@@ -24,8 +24,8 @@
             </div>
         </div>
 
-        <h4>online link: {{ $project->project_link }}</h4>
-        <h4>github link: {{ $project->github_link }}</h4>
+        <h4>online link: <a href="{{ $project->project_link }}">{{ $project->project_link }}</a></h4>
+        <h4>github link: <a href="{{ $project->github_link }}">{{ $project->github_link }}</a></h4>
 
         <div class="row mt-4">
 
